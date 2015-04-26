@@ -10,7 +10,7 @@ Account management for KISSCMS web apps
 
 ## Usage
 
-Extract the contents in your plugins folder in a ```account``` sub-dir. The account controller named ```KISSCMS_Account``` will be available to extend...
+Extract the contents in your plugins folder in a ```account``` sub-dir. The account controller named ```KISS_Account``` will be available to extend...
 
 
 ## Credits
