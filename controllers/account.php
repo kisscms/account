@@ -52,6 +52,8 @@ class KISS_Account extends Controller {
 			if( $valid ){
 				// create account
 				$this->create();
+				// trigger event, replace with: Event::trigger('user:register');
+				$this->onRegister();
 				// login
 				$this->login();
 			} else {
@@ -116,6 +118,10 @@ class KISS_Account extends Controller {
 		// validate db entry?
 	}
 
+	// events
+	// - placeholders
+	function onRegister(){
+	}
 }
 
 ?>
