@@ -31,6 +31,12 @@ class User extends Model {
 		return parent::schema( $schema );
 	}
 
+	// events
+	// - placeholders
+	function onRegister(){
+		// replace with your own method...
+	}
+
 }
 
 ?>
