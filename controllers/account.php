@@ -22,6 +22,12 @@ class KISS_Account extends Controller {
 		if( $method == "POST" ){
 			// process creds
 			$login = $this->checkLogin();
+			// support ajax response
+			if( isset($_REQUEST['ajax']) ){
+				echo '{ "login": "'. $login .'" }';
+				exit();
+			}
+			// redirect based on state
 			if( $login ){
 				// redirect to homepage
 				header("Location: ". url() );
