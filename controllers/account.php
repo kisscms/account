@@ -13,6 +13,25 @@ class KISS_Account extends Controller {
 
 	}
 
+	function index() {
+		// process creds
+		$login = $this->checkLogin();
+		// redirect based on state
+		if( $login ){
+			// get data
+			//$db = $this->db['user']; // this should be already defined in the controller's contruct....
+			//$user = $db->findOne("email", $email);
+			$user = $_SESSION['user'];
+			$user['created'] = ( strlen((string)$user['created']) == 13 ) ? $user['created']/1000: $user['created']; // normalize date
+			$this->data['body'][] = $user;
+			return $this->render("index");
+		} else {
+			// redirect to login (with error message?)
+			header("Location: ". url("account/login") );
+			exit();
+		}
+	}
+
 	function login() {
 		$method = $_SERVER['REQUEST_METHOD'];
 		if( $method == "GET" ){
