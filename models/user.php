@@ -19,7 +19,7 @@ class User extends Model {
 		}
 	}
 
-	function schema(){
+	function schema($schema=array()){
 
 		$schema = array(
 			"id" => "",
