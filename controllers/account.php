@@ -34,7 +34,13 @@ class KISS_Account extends Controller {
 
 	function login() {
 		$method = $_SERVER['REQUEST_METHOD'];
+		//
 		if( $method == "GET" ){
+			// redirect now if already logged in
+			if( array_key_exists('user', $_SESSION ) ){
+				 header("Location: ". url() );
+				 exit();
+			}
 			// load the form
 			return $this->render("login");
 		}
@@ -49,7 +55,8 @@ class KISS_Account extends Controller {
 			// redirect based on state
 			if( $login ){
 				// redirect to homepage
-				header("Location: ". url() );
+				$path = ( array_key_exists('return_link', $_REQUEST) ) ? $_REQUEST['return_link'] : "/";
+				header("Location: ". url($path) );
 			} else {
 				// redirect to login (with error message?)
 				header("Location: ". url("account/login") );
