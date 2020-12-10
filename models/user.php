@@ -3,7 +3,7 @@
 class User extends Model {
 	protected $name = "user";
 
-	function __construct($id=false, $table="users") {
+	function __construct($id=false, $table="users", $dbhfnname='getdbh',$quote_style='MYSQL',$compress_array=true) {
 		// class vars that may have already been set
 		if( !$this->db ) $this->db = "users.sqlite";
 		if( !$this->pkname ) $this->pkname = "id";
